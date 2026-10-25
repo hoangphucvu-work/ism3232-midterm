@@ -27,16 +27,16 @@ def calculate_bean_cost(bag_price: float, bags: int) -> float:
 
 def get_bulk_discount(bags: int, partner: bool = False) -> float:
     """ Returns the discount rate based on the number of bags and whether the buyer is a partner. """
-    if bags < small_discount_bags:
-        discount_rate = 0
-
-    if bags < large_discount_bags:
-        discount_rate = small_discount
-    else:
-        discount_rate = large_discount
-
-    if partner:
-        discount_rate += partner_bonus
+    if bags >= large_discount_bags:
+        if partner is True:
+            discount_rate = large_discount + partner_bonus
+        else: discount_rate = large_discount
+    elif bags >= small_discount_bags:
+        if partner is True:
+            discount_rate = small_discount + partner_bonus
+        else:
+            discount_rate = small_discount
+    else: discount_rate = 0.0
 
     return discount_rate
 
