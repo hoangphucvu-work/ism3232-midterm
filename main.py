@@ -1,8 +1,16 @@
 # main.py
-#Author: Hoang Phuc Vu
+# Author: Hoang Phuc Vu
 
 from business_rules import (
-    calculate_bean_cost, get_bulk_discount, calculate_shipment_total, requires_prepayment, needs_pallet, total_shipped, largest_shipment, format_shipment_line)
+    calculate_bean_cost,
+    get_bulk_discount,
+    calculate_shipment_total,
+    requires_prepayment,
+    needs_pallet,
+    total_shipped,
+    largest_shipment,
+    format_shipment_line,
+)
 
 
 shipments = [
@@ -16,13 +24,13 @@ shipments = [
     {"buyer": "Cove Market", "bag_price": 13.00, "bags": 150, "partner": True},
 ]
 
+
 def main() -> None:
     """Process coffee shipments and print formatted report with summary statistics"""
     print("Copper Kettle Coffee Roasters - Shipment Report")
 
-    prepayment_count = 0    
+    prepayment_count = 0
     pallet_count = 0
-
 
     for shipment in shipments:
         total = calculate_shipment_total(
