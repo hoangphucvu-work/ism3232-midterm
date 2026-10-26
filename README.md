@@ -1,7 +1,7 @@
 # ISM3232 Midterm: Copper Kettle Coffee Roaster
 
 - **Name:** Hoang Phuc Vu
-- **Version:** 1.0
+- **Version:** 1.1
 - **Date:** 10/25/2026
 
 ## What This Program Does
@@ -17,7 +17,7 @@ There are 6 business rules:
 6. A shipment will need a fright pallet if BOTH requirements are met: more than 60 bags and  shipment total is over $700.
 
 ## How to Run
-cd ~Documents/ism3232/ism3232-midterm
+'''cd ~Documents/ism3232/ism3232-midterm
 python3 -m venv .venv 
 source .venv/bin/activate
 pip install pytest ruff 
@@ -27,22 +27,28 @@ echo '__pycache__/' >> .gitignore
 touch main.py 
 touch business_rules.py
 mkdir -p tests && touch tests/__init__.py tests/test_business_rules.py
-python3 main.py
+python3 main.py'''
 
 ## How to Test
-ruff format .
+'''ruff format .
 ruff check .
-pytest -v
+pytest -v'''
 24 tests written, all passed
 
 ## Files in This Repository
-requirements.txt: The virtual environment is created and all the tools are installed
-.gitignore: a text file telling Git what to ignore, prevents files from being accidentally leaked
-README.md: information of the project
-commands.md: lists of commands of the project
-main.py: the main Python3 file, including 8 shipments and their details. Running this file will display the report and other statistics that have been mentioned prior.
-business_rules.py: rules of the business, which are then applied to other files (main.py and tests/test_business_rules.py)
-tests/test_business_rules.py: define tests to test back the business_rules.py, making sure that there is no error in the code
+1. requirements.txt: The virtual environment is created and all the tools are installed
+
+2. .gitignore: a text file telling Git what to ignore, prevents files from being accidentally leaked
+
+3. README.md: information of the project
+
+4. commands.md: lists of commands of the project
+
+5. main.py: the main Python3 file, including 8 shipments and their details. Running this file will display the report and other statistics that have been mentioned prior.
+
+6. business_rules.py: rules of the business, which are then applied to other files (main.py and tests/test_business_rules.py)
+
+7. tests/test_business_rules.py: define tests to test back the business_rules.py, making sure that there is no error in the code
 
 ## AI Use Statement
 I did not use AI for any part of the whole project. Everything is written, checked, debugged, and commited to GitHub by me and only me, with the help of the course site and my past labs. 
