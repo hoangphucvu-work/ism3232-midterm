@@ -8,7 +8,7 @@ from business_rules import (
     total_shipped,
 )
 
-
+#Calculation test for rule 1
 def test_calculate_bean_cost():
     assert round(calculate_bean_cost(10.0, 67), 2) == 670.00
 
@@ -16,7 +16,7 @@ def test_calculate_bean_cost():
 def test_calculate_bean_cost_zero_bags():
     assert round(calculate_bean_cost(15.0, 0), 2) == 0.00
 
-
+# Test for rule 2 & 3
 def test_get_bulk_discount_under_small_discount_no_partner():
     assert round(get_bulk_discount(19, False), 2) == 0.00
 
@@ -48,7 +48,7 @@ def test_get_bulk_discount_large_discount_exact_no_partner():
 def test_get_bulk_discount_large_discount_exact_partner():
     assert round(get_bulk_discount(80, True), 2) == 0.18
 
-
+# Test for rule 4
 def test_calculate_shipment_total_under_threshold_shipping_fee():
     assert round(calculate_shipment_total(10.0, 10, partner=False), 2) == 135.00
 
@@ -60,7 +60,7 @@ def test_calculate_shipment_total_at_threshold_no_shipping_fee():
 def test_calculate_shipment_total_over_threshold_no_shipping_fee():
     assert round(calculate_shipment_total(30.0, 10, partner=False), 2) == 300.00
 
-
+# Test for rule 5
 def test_requires_prepayment_below_threshold():
     assert requires_prepayment(1499.00) is False
 
@@ -72,7 +72,7 @@ def test_requires_prepayment_at_threshold():
 def test_requires_prepayment_above_threshold():
     assert requires_prepayment(1504.00) is True
 
-
+# Test for rule 6
 def test_needs_pallet_both_below_threshold():
     assert needs_pallet(59, 699.00) is False
 
@@ -88,7 +88,7 @@ def test_needs_pallet_bags_below_threshold_total_above_threshold():
 def test_needs_pallet_both_above_threshold():
     assert needs_pallet(61, 1500.00) is True
 
-
+# Test for statistics display
 def test_total_shipped_short_list():
     short_shipments = [
         {"buyer": "A", "bag_price": 10.00, "bags": 10, "partner": False},

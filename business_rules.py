@@ -19,13 +19,14 @@ pallet_bag_threshold: int = 60
 pallet_total_threshold: float = 700
 
 # End of constant values
+# If any threshold or percentage need to be updated, update in the constant value above.
 
-
+# Rule 1
 def calculate_bean_cost(bag_price: float, bags: int) -> float:
     """Returns the bean cost before discount."""
     return bag_price * bags
 
-
+# Rule 2 and 3
 def get_bulk_discount(bags: int, partner: bool = False) -> float:
     """Returns the discount rate based on the number of bags and whether the buyer is a partner."""
     if bags >= large_discount_bags:
@@ -43,7 +44,7 @@ def get_bulk_discount(bags: int, partner: bool = False) -> float:
 
     return discount_rate
 
-
+# Calculating total after discount to compare to threshold for shipping fee, prepayments and pallets
 def calculate_shipment_total(
     bag_price: float, bags: int, partner: bool = False
 ) -> float:
@@ -57,17 +58,17 @@ def calculate_shipment_total(
         discounted_cost += shipping_fee
     return discounted_cost
 
-
+# Rule 4
 def requires_prepayment(total: float) -> bool:
     """Returns True if the order requires prepayment, False otherwise."""
     return total >= prepayment_threshold
 
-
+# Rule 5
 def needs_pallet(bags: int, total: float) -> bool:
     """Returns True if the order needs a freight pallet, False otherwise."""
     return bags > pallet_bag_threshold and total > pallet_total_threshold
 
-
+# Rule 6
 def total_shipped(shipments: list) -> float:
     """Returns the sum of shipment totals for every shipment in the list."""
     grand_total = 0
@@ -77,7 +78,7 @@ def total_shipped(shipments: list) -> float:
         )
     return grand_total
 
-
+# Statistics: Largest shipment order
 def largest_shipment(shipments: list) -> str:
     """Returns the buyer of the the shipment with the largest total cost."""
     if not shipments:
@@ -95,7 +96,7 @@ def largest_shipment(shipments: list) -> str:
             largest_buyer = shipment["buyer"]
     return largest_buyer
 
-
+# Format one line report for final outcome
 def format_shipment_line(
     buyer: str, grand_total: float, prepayment: bool, pallet: bool
 ) -> str:
